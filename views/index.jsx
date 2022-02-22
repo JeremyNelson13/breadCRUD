@@ -19,6 +19,12 @@ function Index ({breads, title}) {
                     })
                 }
             </ul>
+            <div className='newButton'>
+                <a href='/breads/new'><button>Add a New Bread</button></a>
+            </div>
+            <div>
+                <a href='/breads'><button>Return to Index</button></a>
+            </div>
         </Default>
     )
 }
