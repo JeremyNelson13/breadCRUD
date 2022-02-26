@@ -3,6 +3,7 @@ const breads = require('../controllers/breads_controller')
 const Default = require('./layouts/default')
 
 function Index ({breads, title}) {
+    console.log('breads: ', breads)
     return (
         <Default title={title}>
             <h2>Index Page</h2>
@@ -12,7 +13,7 @@ function Index ({breads, title}) {
                 {
                     breads.map((bread, index) => {
                         return(<li key={index}>
-                            <a href={`/breads/${index}`}>
+                            <a href={`/breads/${bread.id}`}>
                                {bread.name} 
                             </a>
                         </li>)
