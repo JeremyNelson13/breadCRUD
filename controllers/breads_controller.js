@@ -16,13 +16,17 @@ const Baker = require('../models/bakers.js')
 // })
 
 breads.get('/', (req, res) => {
+    Baker.find()
+      .then(foundBakers => {
     Bread.find()
       .then(foundBreads => {
         res.render('index', {
           "breads": foundBreads,
+          "bakers": foundBakers,
           "title": 'Index Page'
         })
       })
+    })
   })
   
 //NEW
@@ -95,6 +99,7 @@ breads.put('/:id', (req, res) => {
 })
 //DELETE
 breads.delete('/:id', (req,res) => {
+    Baker.findByIdAndDelete(req.params.id)
     Bread.findByIdAndDelete(req.params.id)
         .then(deletedBread => {
             res.status(303).redirect('/breads')
